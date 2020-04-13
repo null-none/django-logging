@@ -1,14 +1,14 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import time
 import logging
 
 from django.http import FileResponse
 
+from .models import Logging
+
 request_params_logger = logging.getLogger('request_logging.request_params')
 request_logger = logging.getLogger('request_logging.request')
 error_logger = logging.getLogger('request_logging.request')
+
 
 class RequestLoggingMiddleware(object):
 
@@ -77,4 +77,12 @@ class RequestLoggingMiddleware(object):
             content_type=response.get('Content-Type'),
         )
         request_logger.info(msg)
+        Logging.objects.create(method=repr(request.method),
+                               path=repr(request.path),
+                               user=user_str,
+                               ip=self.get_client_ip(request),
+                               time=time_str,
+                               status=response.status_code,
+                               length=content_length,
+                               content_type=response.get('Content-Type'))
         return response
