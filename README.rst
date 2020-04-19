@@ -7,16 +7,22 @@ Install
     pip install django-logging
 
 =======
-Example
+Quick start
 =======
 
-.. code-block:: python
+1. Add "django_logging" to your INSTALLED_APPS settings like this:
 
-    MIDDLEWARE_CLASSES = [
-      ...
-      'django_logging.middleware',
-      ...
-    ]
+INSTALLED_APPS = (
+    ...
+    'django_logging',
+)
+
+2. Include the 'django_logging.middleware' middleware in your MIDDLEWARE_CLASSES like this:
+
+MIDDLEWARE_CLASSES = [
+    'django_logging.middleware',
+    ...
+]
 
 =======
 
