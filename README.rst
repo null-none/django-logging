@@ -12,7 +12,8 @@ Quick start
 
 1. Add "django_logging" to your INSTALLED_APPS settings like this:
 
-.. code-block:: python
+.. code-block:: bash
+
     INSTALLED_APPS = (
         ...
         'django_logging',
@@ -20,7 +21,8 @@ Quick start
 
 2. Include the 'django_logging.middleware' middleware in your MIDDLEWARE_CLASSES like this:
 
-.. code-block:: python
+.. code-block:: bash
+
     MIDDLEWARE_CLASSES = [
         'django_logging.middleware',
         ...
